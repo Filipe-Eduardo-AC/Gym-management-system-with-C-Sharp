@@ -86,6 +86,7 @@
             // 
             this.tb_password.Location = new System.Drawing.Point(330, 27);
             this.tb_password.Name = "tb_password";
+            this.tb_password.PasswordChar = '*';
             this.tb_password.Size = new System.Drawing.Size(100, 23);
             this.tb_password.TabIndex = 5;
             // 
@@ -188,6 +189,7 @@
             this.btn_close.TabIndex = 3;
             this.btn_close.Text = "Close";
             this.btn_close.UseVisualStyleBackColor = true;
+            this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
             // 
             // btn_cancel
             // 
@@ -198,6 +200,7 @@
             this.btn_cancel.TabIndex = 2;
             this.btn_cancel.Text = "Cancel";
             this.btn_cancel.UseVisualStyleBackColor = true;
+            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
             // btn_save
             // 
@@ -219,6 +222,7 @@
             this.btn_new.TabIndex = 0;
             this.btn_new.Text = "New";
             this.btn_new.UseVisualStyleBackColor = true;
+            this.btn_new.Click += new System.EventHandler(this.btn_new_Click);
             // 
             // F_NewUser
             // 
