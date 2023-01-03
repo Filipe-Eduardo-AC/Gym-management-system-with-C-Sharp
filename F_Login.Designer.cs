@@ -51,6 +51,7 @@
             this.tb_username.Name = "tb_username";
             this.tb_username.Size = new System.Drawing.Size(144, 23);
             this.tb_username.TabIndex = 1;
+            this.tb_username.Text = "Filipeeac";
             // 
             // label2
             // 
@@ -68,6 +69,7 @@
             this.tb_password.PasswordChar = '*';
             this.tb_password.Size = new System.Drawing.Size(144, 23);
             this.tb_password.TabIndex = 3;
+            this.tb_password.Text = "1205";
             // 
             // btn_login
             // 

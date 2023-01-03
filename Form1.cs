@@ -54,7 +54,8 @@ namespace gym_management
             {
                 if (Global.level >= 1)
                 {
-                    //procedimento
+                    F_NewUser f_NewUser = new F_NewUser();
+                    f_NewUser.ShowDialog();
                 }
                 else
                 {
