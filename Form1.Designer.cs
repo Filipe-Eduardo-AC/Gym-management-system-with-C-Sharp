@@ -136,7 +136,7 @@
             // newCustomerToolStripMenuItem
             // 
             this.newCustomerToolStripMenuItem.Name = "newCustomerToolStripMenuItem";
-            this.newCustomerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.newCustomerToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.newCustomerToolStripMenuItem.Text = "New customer";
             this.newCustomerToolStripMenuItem.Click += new System.EventHandler(this.newCustomerToolStripMenuItem_Click);
             // 
@@ -167,6 +167,7 @@
             this.userManagementToolStripMenuItem.Name = "userManagementToolStripMenuItem";
             this.userManagementToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.userManagementToolStripMenuItem.Text = "User Management";
+            this.userManagementToolStripMenuItem.Click += new System.EventHandler(this.userManagementToolStripMenuItem_Click);
             // 
             // maintenanceToolStripMenuItem
             // 

@@ -79,5 +79,25 @@ namespace gym_management
                 MessageBox.Show("A user needs to be logged in", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void userManagementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Global.logged)
+            {
+                if (Global.level >= 1)
+                {
+                    F_UserManagement f_UserManagement = new F_UserManagement();
+                    f_UserManagement.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Access denied", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else
+            {
+                MessageBox.Show("A user needs to be logged in", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }
