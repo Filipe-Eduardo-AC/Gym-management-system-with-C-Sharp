@@ -34,7 +34,6 @@ namespace gym_management
             {
                 throw ex;
             }
-
         }
 
         public static DataTable consult(string sql)
@@ -60,7 +59,49 @@ namespace gym_management
             }
         }
 
-        // Função do form F_NewUser
+        public static DataTable GetUsersIdName()
+        {
+            SQLiteDataAdapter da = null;
+            DataTable dt = new DataTable();
+
+            try
+            {
+                var vcon = DB_Connection();
+                var cmd = DB_Connection().CreateCommand();
+
+                cmd.CommandText = "SELECT N_USERID as 'User ID', T_NAME as 'Name' FROM tb_users";
+                da = new SQLiteDataAdapter(cmd.CommandText, vcon);
+                da.Fill(dt);
+                vcon.Close();
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static DataTable GetUsersData(string id)
+        {
+            SQLiteDataAdapter da = null;
+            DataTable dt = new DataTable();
+
+            try
+            {
+                var vcon = DB_Connection();
+                var cmd = DB_Connection().CreateCommand();
+
+                cmd.CommandText = "SELECT * FROM tb_users WHERE N_USERID=" + id;
+                da = new SQLiteDataAdapter(cmd.CommandText, vcon);
+                da.Fill(dt);
+                vcon.Close();
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
         public static void NewUser(User u)
         {
@@ -87,11 +128,6 @@ namespace gym_management
                 MessageBox.Show("Error while creating new user", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
-        //Fim Função do form F_NewUser
-
-
-        //Rotinas gerais
 
         public static bool usernameExists(User u)
         {

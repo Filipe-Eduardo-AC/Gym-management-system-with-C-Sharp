@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.n_level = new System.Windows.Forms.NumericUpDown();
@@ -38,7 +39,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tb_name = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tb_id = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btn_close = new System.Windows.Forms.Button();
@@ -142,14 +143,14 @@
             this.label1.TabIndex = 13;
             this.label1.Text = "Name";
             // 
-            // textBox1
+            // tb_id
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 27);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(100, 23);
-            this.textBox1.TabIndex = 27;
-            this.textBox1.TabStop = false;
+            this.tb_id.Location = new System.Drawing.Point(12, 27);
+            this.tb_id.Name = "tb_id";
+            this.tb_id.ReadOnly = true;
+            this.tb_id.Size = new System.Drawing.Size(100, 23);
+            this.tb_id.TabIndex = 27;
+            this.tb_id.TabStop = false;
             // 
             // label9
             // 
@@ -216,13 +217,26 @@
             // 
             this.dgv_users.AllowUserToAddRows = false;
             this.dgv_users.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_users.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgv_users.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_users.EnableHeadersVisualStyles = false;
             this.dgv_users.Location = new System.Drawing.Point(224, 9);
+            this.dgv_users.MultiSelect = false;
             this.dgv_users.Name = "dgv_users";
             this.dgv_users.ReadOnly = true;
+            this.dgv_users.RowHeadersVisible = false;
             this.dgv_users.RowTemplate.Height = 25;
+            this.dgv_users.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_users.Size = new System.Drawing.Size(310, 208);
             this.dgv_users.TabIndex = 29;
+            this.dgv_users.SelectionChanged += new System.EventHandler(this.dgv_users_SelectionChanged);
             // 
             // F_UserManagement
             // 
@@ -231,7 +245,7 @@
             this.ClientSize = new System.Drawing.Size(544, 253);
             this.Controls.Add(this.dgv_users);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tb_id);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -249,6 +263,7 @@
             this.Name = "F_UserManagement";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "User Management";
+            this.Load += new System.EventHandler(this.F_UserManagement_Load);
             ((System.ComponentModel.ISupportInitialize)(this.n_level)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_users)).EndInit();
@@ -268,7 +283,7 @@
         private Label label2;
         private TextBox tb_name;
         private Label label1;
-        private TextBox textBox1;
+        private TextBox tb_id;
         private Label label9;
         private Panel panel1;
         private Button btn_close;
