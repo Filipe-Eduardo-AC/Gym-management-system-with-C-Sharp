@@ -39,5 +39,45 @@ namespace gym_management
                 n_level.Value = dt.Rows[0].Field<Int64>("N_LEVEL");
             }
         }
+
+        private void btn_new_Click(object sender, EventArgs e)
+        {
+            F_NewUser f_NewUser = new F_NewUser();
+            f_NewUser.ShowDialog();
+            dgv_users.DataSource = Database.GetUsersIdName();
+        }
+
+        private void btn_save_Click(object sender, EventArgs e)
+        {
+            int line = dgv_users.SelectedRows[0].Index;
+            User u = new User();
+            u.id = Convert.ToInt32(tb_id.Text);
+            u.name = tb_name.Text;
+            u.username = tb_username.Text;
+            u.password = tb_password.Text;
+            u.status = cb_status.Text;
+            u.level = Convert.ToInt32(Math.Round(n_level.Value, 0));
+
+            Database.UpdateUsers(u);
+            //dgv_users.DataSource = Database.GetUsersIdName();
+            //dgv_users.CurrentCell = dgv_users[0, line];
+            dgv_users[1, line].Value = tb_name.Text;
+        }
+
+        private void btn_delete_Click(object sender, EventArgs e)
+        {
+            DialogResult res = MessageBox.Show("Do you really want to delete this user?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (res == DialogResult.Yes)
+            {
+                Database.DeleteUser(tb_id.Text);
+                dgv_users.Rows.Remove(dgv_users.CurrentRow);
+            }
+        }
+
+        private void btn_close_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

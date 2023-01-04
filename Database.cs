@@ -103,6 +103,48 @@ namespace gym_management
             }
         }
 
+        public static void UpdateUsers(User u)
+        {
+            SQLiteDataAdapter da = null;
+            DataTable dt = new DataTable();
+
+            try
+            {
+                var vcon = DB_Connection();
+                var cmd = DB_Connection().CreateCommand();
+
+                cmd.CommandText = "UPDATE tb_users SET T_NAME = '" + u.name + "', T_USERNAME = '" + u.username + "', T_USERPASSWORD = '" + u.password + "', T_STATUS = '" + u.status + "', N_LEVEL =" + u.level + " WHERE N_USERID =" + u.id;
+                da = new SQLiteDataAdapter(cmd.CommandText, vcon);
+                cmd.ExecuteNonQuery();
+                vcon.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static void DeleteUser(string id)
+        {
+            SQLiteDataAdapter da = null;
+            DataTable dt = new DataTable();
+
+            try
+            {
+                var vcon = DB_Connection();
+                var cmd = DB_Connection().CreateCommand();
+
+                cmd.CommandText = "DELETE FROM tb_users WHERE N_USERID =" + id;
+                da = new SQLiteDataAdapter(cmd.CommandText, vcon);
+                cmd.ExecuteNonQuery();
+                vcon.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public static void NewUser(User u)
         {
             if (usernameExists(u))
