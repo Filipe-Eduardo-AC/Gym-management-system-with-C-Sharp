@@ -26,7 +26,7 @@ namespace gym_management
             }
 
             string sql = "SELECT * FROM tb_users WHERE T_USERNAME = '" + username + "' AND T_USERPASSWORD= '" + password + "'";
-            dt = Database.consult(sql);
+            dt = Database.dql(sql);
 
             if (dt.Rows.Count == 1)
             {
