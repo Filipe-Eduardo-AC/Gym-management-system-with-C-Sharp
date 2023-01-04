@@ -5,6 +5,9 @@
         public static string Version = "1.0";
         public static bool logged = false;
         public static int level = 0; //0=Default - 1=Manager - 2=Master
+        public static string path = System.Environment.CurrentDirectory;
+        public static string nameDatabase = "db_gym.db";
+        public static string pathDatabase = path + @"\database\";
 
         /*
         tb_users

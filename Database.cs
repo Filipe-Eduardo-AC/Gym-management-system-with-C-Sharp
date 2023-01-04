@@ -9,9 +9,63 @@ namespace gym_management
 
         private static SQLiteConnection DB_Connection()
         {
-            connection = new SQLiteConnection("Data Source=C:\\Users\\filip\\Desktop\\Coding\\Projects\\C#\\gym_management\\database\\db_gym.db");
+            connection = new SQLiteConnection("Data Source=" + Global.pathDatabase + Global.nameDatabase);
             connection.Open();
             return connection;
+        }
+
+        public static DataTable dql(string sql) // Data Query Language (select)
+        {
+            SQLiteDataAdapter da = null;
+            DataTable dt = new DataTable();
+
+            try
+            {
+                var vcon = DB_Connection();
+                var cmd = DB_Connection().CreateCommand();
+
+                cmd.CommandText = sql;
+                da = new SQLiteDataAdapter(cmd.CommandText, vcon);
+                da.Fill(dt);
+                vcon.Close();
+                return dt;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static void dml(string q, string msgOK = null, string msgError = null) // Data Manipulation Language (insert, delete, update)
+        {
+            SQLiteDataAdapter da = null;
+            DataTable dt = new DataTable();
+
+            try
+            {
+                var vcon = DB_Connection();
+                var cmd = DB_Connection().CreateCommand();
+
+                cmd.CommandText = q;
+                da = new SQLiteDataAdapter(cmd.CommandText, vcon);
+                cmd.ExecuteNonQuery();
+                vcon.Close();
+
+                if (msgOK != null)
+                {
+                    MessageBox.Show(msgOK);
+                }
+            }
+            catch (Exception ex)
+            {
+                if (msgError != null)
+                {
+                    MessageBox.Show(msgError + "\n" + ex.Message);
+                }
+
+                throw ex;
+            }
         }
 
         public static DataTable GetAllUsers()
@@ -29,29 +83,6 @@ namespace gym_management
                 da.Fill(dt);
                 vcon.Close();
                 return dt;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        public static DataTable consult(string sql)
-        {
-            SQLiteDataAdapter da = null;
-            DataTable dt = new DataTable();
-
-            try
-            {
-                var vcon = DB_Connection();
-                var cmd = DB_Connection().CreateCommand();
-
-                cmd.CommandText = sql;
-                da = new SQLiteDataAdapter(cmd.CommandText, vcon);
-                da.Fill(dt);
-                vcon.Close();
-                return dt;
-
             }
             catch (Exception ex)
             {
