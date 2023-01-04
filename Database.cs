@@ -21,18 +21,17 @@ namespace gym_management
 
             try
             {
-                using (var cmd = DB_Connection().CreateCommand())
-                {
-                    cmd.CommandText = "SELECT * FROM tb_users";
-                    da = new SQLiteDataAdapter(cmd.CommandText, DB_Connection());
-                    da.Fill(dt);
-                    DB_Connection().Close();
-                    return dt;
-                }
+                var vcon = DB_Connection();
+                var cmd = DB_Connection().CreateCommand();
+
+                cmd.CommandText = "SELECT * FROM tb_users";
+                da = new SQLiteDataAdapter(cmd.CommandText, vcon);
+                da.Fill(dt);
+                vcon.Close();
+                return dt;
             }
             catch (Exception ex)
             {
-                DB_Connection().Close();
                 throw ex;
             }
 
@@ -45,18 +44,18 @@ namespace gym_management
 
             try
             {
-                using (var cmd = DB_Connection().CreateCommand())
-                {
-                    cmd.CommandText = sql;
-                    da = new SQLiteDataAdapter(cmd.CommandText, DB_Connection());
-                    da.Fill(dt);
-                    DB_Connection().Close();
-                    return dt;
-                }
+                var vcon = DB_Connection();
+                var cmd = DB_Connection().CreateCommand();
+
+                cmd.CommandText = sql;
+                da = new SQLiteDataAdapter(cmd.CommandText, vcon);
+                da.Fill(dt);
+                vcon.Close();
+                return dt;
+
             }
             catch (Exception ex)
             {
-                DB_Connection().Close();
                 throw ex;
             }
         }
@@ -71,7 +70,8 @@ namespace gym_management
             }
             try
             {
-                var cmd = DB_Connection().CreateCommand();
+                var vcon = DB_Connection();
+                var cmd = vcon.CreateCommand();
                 cmd.CommandText = "INSERT INTO tb_users (T_NAME, T_USERNAME, T_USERPASSWORD, T_STATUS, N_LEVEL) VALUES (@name, @username, @password, @status, @level)";
                 cmd.Parameters.AddWithValue("@name", u.name);
                 cmd.Parameters.AddWithValue("@username", u.username);
@@ -80,12 +80,11 @@ namespace gym_management
                 cmd.Parameters.AddWithValue("@level", u.level);
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("New user created successfully", "New user created", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                DB_Connection().Close();
+                vcon.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error while creating new user", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                DB_Connection().Close();
             }
         }
 
@@ -100,9 +99,10 @@ namespace gym_management
             SQLiteDataAdapter da = null;
             DataTable dt = new DataTable();
 
-            var cmd = DB_Connection().CreateCommand();
+            var vcon = DB_Connection();
+            var cmd = vcon.CreateCommand();
             cmd.CommandText = "SELECT T_USERNAME FROM tb_users WHERE T_USERNAME = '" + u.username + "'";
-            da = new SQLiteDataAdapter(cmd.CommandText, DB_Connection());
+            da = new SQLiteDataAdapter(cmd.CommandText, vcon);
             da.Fill(dt);
 
             if (dt.Rows.Count > 0)
@@ -113,7 +113,7 @@ namespace gym_management
             {
                 res = false;
             }
-
+            vcon.Close();
             return res;
         }
 
