@@ -9,6 +9,25 @@ namespace gym_management
             f_Login.ShowDialog();
         }
 
+        private void openForm(int level, Form f)
+        {
+            if (Global.logged)
+            {
+                if (Global.level >= level)
+                {
+                    f.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Access denied", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else
+            {
+                MessageBox.Show("A user needs to be logged in", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
         private void label2_Click(object sender, EventArgs e)
         {
 
@@ -98,6 +117,12 @@ namespace gym_management
             {
                 MessageBox.Show("A user needs to be logged in", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void scheduleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            F_Schedule f_Schedule = new F_Schedule();
+            openForm(2, f_Schedule);
         }
     }
 }
