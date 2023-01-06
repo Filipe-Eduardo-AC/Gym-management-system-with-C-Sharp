@@ -50,73 +50,24 @@ namespace gym_management
 
         private void databaseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (Global.logged)
-            {
-                if (Global.level >= 2)
-                {
-                    //procedimento
-                }
-                else
-                {
-                    MessageBox.Show("Access denied", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            else
-            {
-                MessageBox.Show("A user needs to be logged in", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            // openForm();
         }
 
         private void newUserToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (Global.logged)
-            {
-                if (Global.level >= 1)
-                {
-                    F_NewUser f_NewUser = new F_NewUser();
-                    f_NewUser.ShowDialog();
-                }
-                else
-                {
-                    MessageBox.Show("Access denied", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            else
-            {
-                MessageBox.Show("A user needs to be logged in", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            F_NewUser f_NewUser = new F_NewUser();
+            openForm(1, f_NewUser);
         }
 
         private void newCustomerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (Global.logged)
-            {
-                //procedimento
-            }
-            else
-            {
-                MessageBox.Show("A user needs to be logged in", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            // openForm();
         }
 
         private void userManagementToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (Global.logged)
-            {
-                if (Global.level >= 1)
-                {
-                    F_UserManagement f_UserManagement = new F_UserManagement();
-                    f_UserManagement.ShowDialog();
-                }
-                else
-                {
-                    MessageBox.Show("Access denied", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            else
-            {
-                MessageBox.Show("A user needs to be logged in", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            F_UserManagement f_UserManagement = new F_UserManagement();
+            openForm(1, f_UserManagement);
         }
 
         private void scheduleToolStripMenuItem_Click(object sender, EventArgs e)
