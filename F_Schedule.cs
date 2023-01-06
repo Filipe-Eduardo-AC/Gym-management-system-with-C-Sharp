@@ -56,19 +56,26 @@ namespace gym_management
 
         private void btn_save_Click(object sender, EventArgs e)
         {
-            string vquery;
 
-            if (tb_timeId.Text == "")
+            if (mtb_timeDesc.Text == "  :   to   :")
             {
-                vquery = "INSERT INTO tb_schedule (T_DESC) VALUES ('" + mtb_timeDesc.Text + "')";
+                MessageBox.Show("Please insert a valid time", "Attention!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                vquery = "UPDATE tb_schedule SET T_DESC='" + mtb_timeDesc.Text + "' WHERE N_IDSCHEDULE=" + tb_timeId.Text;
-            }
+                string vquery;
 
-            Database.dml(vquery);
-            vquery = @"
+                if (tb_timeId.Text == "")
+                {
+                    vquery = "INSERT INTO tb_schedule (T_DESC) VALUES ('" + mtb_timeDesc.Text + "')";
+                }
+                else
+                {
+                    vquery = "UPDATE tb_schedule SET T_DESC='" + mtb_timeDesc.Text + "' WHERE N_IDSCHEDULE=" + tb_timeId.Text;
+                }
+
+                Database.dml(vquery);
+                vquery = @"
                 SELECT
                     N_IDSCHEDULE as 'Time ID',
                     T_DESC as 'Time'
@@ -77,7 +84,8 @@ namespace gym_management
                 ORDER BY
                     T_DESC
             ";
-            dgv_schedule.DataSource = Database.dql(vquery);
+                dgv_schedule.DataSource = Database.dql(vquery);
+            }
         }
 
         private void btn_delete_Click(object sender, EventArgs e)
