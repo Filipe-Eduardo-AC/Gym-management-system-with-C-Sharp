@@ -75,5 +75,11 @@ namespace gym_management
             F_Schedule f_Schedule = new F_Schedule();
             openForm(2, f_Schedule);
         }
+
+        private void coachesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            F_Coaches f_Coaches = new F_Coaches();
+            openForm(2, f_Coaches);
+        }
     }
 }

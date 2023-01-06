@@ -23,6 +23,10 @@ namespace gym_management
             dgv_schedule.DataSource = Database.dql(vquery);
             dgv_schedule.Columns[0].Width = 60;
             dgv_schedule.Columns[1].Width = 150;
+
+            tb_timeId.Clear();
+            mtb_timeDesc.Clear();
+            mtb_timeDesc.Focus();
         }
 
         private void dgv_schedule_SelectionChanged(object sender, EventArgs e)
