@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tb_timeId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.mtb_timeDesc = new System.Windows.Forms.MaskedTextBox();
@@ -83,14 +83,14 @@
             this.dgv_schedule.AllowUserToDeleteRows = false;
             this.dgv_schedule.AllowUserToResizeColumns = false;
             this.dgv_schedule.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_schedule.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_schedule.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_schedule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_schedule.EnableHeadersVisualStyles = false;
             this.dgv_schedule.Location = new System.Drawing.Point(12, 57);
@@ -111,7 +111,7 @@
             this.btn_new.Name = "btn_new";
             this.btn_new.Size = new System.Drawing.Size(82, 23);
             this.btn_new.TabIndex = 5;
-            this.btn_new.Text = "New time";
+            this.btn_new.Text = "New Time";
             this.btn_new.UseVisualStyleBackColor = true;
             this.btn_new.Click += new System.EventHandler(this.btn_new_Click);
             // 
@@ -122,7 +122,7 @@
             this.btn_save.Name = "btn_save";
             this.btn_save.Size = new System.Drawing.Size(82, 23);
             this.btn_save.TabIndex = 6;
-            this.btn_save.Text = "Save time";
+            this.btn_save.Text = "Save Time";
             this.btn_save.UseVisualStyleBackColor = true;
             this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
             // 
@@ -133,7 +133,7 @@
             this.btn_delete.Name = "btn_delete";
             this.btn_delete.Size = new System.Drawing.Size(82, 23);
             this.btn_delete.TabIndex = 7;
-            this.btn_delete.Text = "Delete time";
+            this.btn_delete.Text = "Delete Time";
             this.btn_delete.UseVisualStyleBackColor = true;
             this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
             // 

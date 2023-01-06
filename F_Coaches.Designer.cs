@@ -85,7 +85,7 @@
             this.btn_new.Name = "btn_new";
             this.btn_new.Size = new System.Drawing.Size(84, 23);
             this.btn_new.TabIndex = 15;
-            this.btn_new.Text = "New coach";
+            this.btn_new.Text = "New Coach";
             this.btn_new.UseVisualStyleBackColor = true;
             this.btn_new.Click += new System.EventHandler(this.btn_new_Click);
             // 
