@@ -46,6 +46,8 @@
             this.n_maxPeople = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.tb_descTeam = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_teams)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.n_maxPeople)).BeginInit();
@@ -86,6 +88,7 @@
             this.btn_newTeam.TabIndex = 6;
             this.btn_newTeam.Text = "New Team";
             this.btn_newTeam.UseVisualStyleBackColor = true;
+            this.btn_newTeam.Click += new System.EventHandler(this.btn_newTeam_Click);
             // 
             // panel1
             // 
@@ -108,6 +111,7 @@
             this.btn_close.TabIndex = 8;
             this.btn_close.Text = "Close";
             this.btn_close.UseVisualStyleBackColor = true;
+            this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
             // 
             // btn_printTeam
             // 
@@ -126,6 +130,7 @@
             this.btn_deleteTeam.TabIndex = 8;
             this.btn_deleteTeam.Text = "Delete Team";
             this.btn_deleteTeam.UseVisualStyleBackColor = true;
+            this.btn_deleteTeam.Click += new System.EventHandler(this.btn_deleteTeam_Click);
             // 
             // btn_saveTeam
             // 
@@ -135,6 +140,7 @@
             this.btn_saveTeam.TabIndex = 7;
             this.btn_saveTeam.Text = "Save Changes";
             this.btn_saveTeam.UseVisualStyleBackColor = true;
+            this.btn_saveTeam.Click += new System.EventHandler(this.btn_saveTeam_Click);
             // 
             // label1
             // 
@@ -170,6 +176,7 @@
             this.cb_coach.Name = "cb_coach";
             this.cb_coach.Size = new System.Drawing.Size(248, 23);
             this.cb_coach.TabIndex = 2;
+            this.cb_coach.SelectedIndexChanged += new System.EventHandler(this.cb_coach_SelectedIndexChanged);
             // 
             // cb_time
             // 
@@ -178,6 +185,7 @@
             this.cb_time.Name = "cb_time";
             this.cb_time.Size = new System.Drawing.Size(248, 23);
             this.cb_time.TabIndex = 5;
+            this.cb_time.SelectedIndexChanged += new System.EventHandler(this.cb_time_SelectedIndexChanged);
             // 
             // cb_status
             // 
@@ -186,6 +194,7 @@
             this.cb_status.Name = "cb_status";
             this.cb_status.Size = new System.Drawing.Size(121, 23);
             this.cb_status.TabIndex = 4;
+            this.cb_status.SelectedIndexChanged += new System.EventHandler(this.cb_status_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -202,6 +211,7 @@
             this.n_maxPeople.Name = "n_maxPeople";
             this.n_maxPeople.Size = new System.Drawing.Size(120, 23);
             this.n_maxPeople.TabIndex = 3;
+            this.n_maxPeople.ValueChanged += new System.EventHandler(this.n_maxPeople_ValueChanged);
             // 
             // label5
             // 
@@ -218,12 +228,31 @@
             this.tb_descTeam.Name = "tb_descTeam";
             this.tb_descTeam.Size = new System.Drawing.Size(248, 23);
             this.tb_descTeam.TabIndex = 1;
+            this.tb_descTeam.TextChanged += new System.EventHandler(this.tb_descTeam_TextChanged);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(363, 268);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 23);
+            this.textBox1.TabIndex = 16;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(363, 250);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(89, 15);
+            this.label6.TabIndex = 17;
+            this.label6.Text = "Space Available";
             // 
             // F_Teams
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(623, 444);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.tb_descTeam);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.n_maxPeople);
@@ -269,5 +298,7 @@
         private NumericUpDown n_maxPeople;
         private Label label5;
         private TextBox tb_descTeam;
+        private TextBox textBox1;
+        private Label label6;
     }
 }

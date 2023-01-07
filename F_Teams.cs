@@ -5,6 +5,8 @@ namespace gym_management
     public partial class F_Teams : Form
     {
         string idSelected;
+        int mode = 0; //0 = default, 1=edição, 2=inserção
+        string vqueryDGV;
 
         public F_Teams()
         {
@@ -13,7 +15,7 @@ namespace gym_management
 
         private void F_Teams_Load(object sender, EventArgs e)
         {
-            string vqueryDGV = @"
+            vqueryDGV = @"
                 SELECT
                     tbt.N_IDTEAM as 'ID',
                     tbt.T_DESCTEAM as 'Team',
@@ -76,6 +78,7 @@ namespace gym_management
 
             if (countLine > 0)
             {
+                mode = 0;
                 idSelected = dgv_teams.Rows[dgv_teams.SelectedRows[0].Index].Cells[0].Value.ToString();
                 string vqueryField = @"
                     SELECT
@@ -94,6 +97,132 @@ namespace gym_management
                 n_maxPeople.Value = dt.Rows[0].Field<Int64>("N_MAXCUSTOMER");
                 cb_status.SelectedValue = dt.Rows[0].Field<string>("T_STATUS");
                 cb_time.SelectedValue = dt.Rows[0].Field<Int64>("N_IDTIME");
+            }
+        }
+
+        private void btn_newTeam_Click(object sender, EventArgs e)
+        {
+            tb_descTeam.Clear();
+            cb_coach.SelectedIndex = -1;
+            n_maxPeople.Value = 0;
+            cb_status.SelectedIndex = -1;
+            cb_time.SelectedIndex = -1;
+            tb_descTeam.Focus();
+            mode = 2;
+        }
+
+        private void btn_saveTeam_Click(object sender, EventArgs e)
+        {
+            if (mode != 0)
+            {
+                string queryTeam = "";
+                string msg = "";
+                if (mode == 1)
+                {
+                    msg = "Data updated";
+                    queryTeam = String.Format(@"
+                    UPDATE
+                        tb_teams
+                    SET
+                        T_DESCTEAM='{0}',
+                        N_IDCOACH={1},
+                        N_IDTIME={2},
+                        N_MAXCUSTOMER={3},
+                        T_STATUS='{4}'
+                    WHERE
+                        N_IDTEAM={5}", tb_descTeam.Text, cb_coach.SelectedValue, cb_time.SelectedValue, Int32.Parse(Math.Round(n_maxPeople.Value).ToString()), cb_status.SelectedValue, idSelected);
+                }
+                else
+                {
+                    msg = "New team created";
+                    queryTeam = String.Format(@"
+                        INSERT INTO tb_teams
+                        (T_DESCTEAM, N_IDCOACH, N_IDTIME, N_MAXCUSTOMER, T_STATUS)
+                        VALUES('{0}',{1},{2},{3},'{4}')", tb_descTeam.Text, cb_coach.SelectedValue, cb_time.SelectedValue, Int32.Parse(Math.Round(n_maxPeople.Value).ToString()), cb_status.SelectedValue);
+                }
+                int line = dgv_teams.SelectedRows[0].Index;
+                Database.dml(queryTeam);
+
+                if (mode == 1)
+                {
+                    dgv_teams[1, line].Value = tb_descTeam.Text;
+                    dgv_teams[2, line].Value = cb_time.Text;
+                }
+                else
+                {
+                    dgv_teams.DataSource = Database.dql(vqueryDGV);
+                }
+
+                MessageBox.Show(msg, "Successfully saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btn_deleteTeam_Click(object sender, EventArgs e)
+        {
+            DialogResult res = MessageBox.Show("Do you really want to delete this team?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (res == DialogResult.Yes)
+            {
+                string queryDeleteTeam = String.Format(@"
+                    DELETE
+                    FROM
+                        tb_teams
+                    WHERE
+                        N_IDTEAM = {0}", idSelected);
+                Database.dml(queryDeleteTeam);
+                dgv_teams.Rows.Remove(dgv_teams.CurrentRow);
+
+                tb_descTeam.Clear();
+                cb_coach.SelectedIndex = -1;
+                n_maxPeople.Value = 0;
+                cb_status.SelectedIndex = -1;
+                cb_time.SelectedIndex = -1;
+                tb_descTeam.Focus();
+                mode = 2;
+            }
+        }
+
+        private void btn_close_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void tb_descTeam_TextChanged(object sender, EventArgs e)
+        {
+            if (mode == 0)
+            {
+                mode = 1;
+            }
+        }
+
+        private void cb_coach_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (mode == 0)
+            {
+                mode = 1;
+            }
+        }
+
+        private void n_maxPeople_ValueChanged(object sender, EventArgs e)
+        {
+            if (mode == 0)
+            {
+                mode = 1;
+            }
+        }
+
+        private void cb_status_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (mode == 0)
+            {
+                mode = 1;
+            }
+        }
+
+        private void cb_time_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (mode == 0)
+            {
+                mode = 1;
             }
         }
     }
