@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgv_teams = new System.Windows.Forms.DataGridView();
             this.btn_newTeam = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -46,7 +46,7 @@
             this.n_maxPeople = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.tb_descTeam = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tb_space = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_teams)).BeginInit();
             this.panel1.SuspendLayout();
@@ -59,14 +59,14 @@
             this.dgv_teams.AllowUserToDeleteRows = false;
             this.dgv_teams.AllowUserToResizeColumns = false;
             this.dgv_teams.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_teams.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_teams.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgv_teams.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_teams.EnableHeadersVisualStyles = false;
             this.dgv_teams.Location = new System.Drawing.Point(12, 12);
@@ -230,12 +230,15 @@
             this.tb_descTeam.TabIndex = 1;
             this.tb_descTeam.TextChanged += new System.EventHandler(this.tb_descTeam_TextChanged);
             // 
-            // textBox1
+            // tb_space
             // 
-            this.textBox1.Location = new System.Drawing.Point(363, 268);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 23);
-            this.textBox1.TabIndex = 16;
+            this.tb_space.Cursor = System.Windows.Forms.Cursors.No;
+            this.tb_space.Location = new System.Drawing.Point(363, 268);
+            this.tb_space.Name = "tb_space";
+            this.tb_space.ReadOnly = true;
+            this.tb_space.Size = new System.Drawing.Size(100, 23);
+            this.tb_space.TabIndex = 16;
+            this.tb_space.TabStop = false;
             // 
             // label6
             // 
@@ -252,7 +255,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(623, 444);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tb_space);
             this.Controls.Add(this.tb_descTeam);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.n_maxPeople);
@@ -298,7 +301,7 @@
         private NumericUpDown n_maxPeople;
         private Label label5;
         private TextBox tb_descTeam;
-        private TextBox textBox1;
+        private TextBox tb_space;
         private Label label6;
     }
 }

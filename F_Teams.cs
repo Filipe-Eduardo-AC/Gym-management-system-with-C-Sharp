@@ -97,7 +97,25 @@ namespace gym_management
                 n_maxPeople.Value = dt.Rows[0].Field<Int64>("N_MAXCUSTOMER");
                 cb_status.SelectedValue = dt.Rows[0].Field<string>("T_STATUS");
                 cb_time.SelectedValue = dt.Rows[0].Field<Int64>("N_IDTIME");
+
+                tb_space.Text = calcSpace();
             }
+        }
+
+        private string calcSpace()
+        {
+            //Cálculo de Vagas
+            string querySpaceAv = String.Format(@"
+                    SELECT
+                        count(N_IDCUSTOMER) as 'contSpace'
+                    FROM
+                        tb_customers
+                    WHERE
+                        T_STATUS = 'A' and N_IDTEAM={0}", idSelected);
+            DataTable dt = Database.dql(querySpaceAv);
+            int space = Int32.Parse(Math.Round(n_maxPeople.Value, 0).ToString());
+            space -= Int32.Parse(dt.Rows[0].Field<Int64>("contSpace").ToString());
+            return space.ToString();
         }
 
         private void btn_newTeam_Click(object sender, EventArgs e)
@@ -153,6 +171,7 @@ namespace gym_management
                     {
                         dgv_teams[1, line].Value = tb_descTeam.Text;
                         dgv_teams[2, line].Value = cb_time.Text;
+                        tb_space.Text = calcSpace();
                     }
                     else
                     {
