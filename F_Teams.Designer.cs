@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgv_teams = new System.Windows.Forms.DataGridView();
             this.btn_newTeam = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -44,6 +44,8 @@
             this.cb_status = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.n_maxPeople = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tb_descTeam = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_teams)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.n_maxPeople)).BeginInit();
@@ -55,14 +57,14 @@
             this.dgv_teams.AllowUserToDeleteRows = false;
             this.dgv_teams.AllowUserToResizeColumns = false;
             this.dgv_teams.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_teams.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_teams.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_teams.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_teams.EnableHeadersVisualStyles = false;
             this.dgv_teams.Location = new System.Drawing.Point(12, 12);
@@ -74,6 +76,7 @@
             this.dgv_teams.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_teams.Size = new System.Drawing.Size(345, 392);
             this.dgv_teams.TabIndex = 5;
+            this.dgv_teams.SelectionChanged += new System.EventHandler(this.dgv_teams_SelectionChanged);
             // 
             // btn_newTeam
             // 
@@ -136,7 +139,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(363, 12);
+            this.label1.Location = new System.Drawing.Point(363, 69);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 15);
             this.label1.TabIndex = 8;
@@ -145,7 +148,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(364, 132);
+            this.label2.Location = new System.Drawing.Point(364, 189);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(33, 15);
             this.label2.TabIndex = 9;
@@ -154,7 +157,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(490, 71);
+            this.label3.Location = new System.Drawing.Point(490, 128);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(39, 15);
             this.label3.TabIndex = 10;
@@ -163,31 +166,31 @@
             // cb_coach
             // 
             this.cb_coach.FormattingEnabled = true;
-            this.cb_coach.Location = new System.Drawing.Point(363, 30);
+            this.cb_coach.Location = new System.Drawing.Point(363, 87);
             this.cb_coach.Name = "cb_coach";
             this.cb_coach.Size = new System.Drawing.Size(248, 23);
-            this.cb_coach.TabIndex = 1;
+            this.cb_coach.TabIndex = 2;
             // 
             // cb_time
             // 
             this.cb_time.FormattingEnabled = true;
-            this.cb_time.Location = new System.Drawing.Point(363, 150);
+            this.cb_time.Location = new System.Drawing.Point(363, 207);
             this.cb_time.Name = "cb_time";
             this.cb_time.Size = new System.Drawing.Size(248, 23);
-            this.cb_time.TabIndex = 4;
+            this.cb_time.TabIndex = 5;
             // 
             // cb_status
             // 
             this.cb_status.FormattingEnabled = true;
-            this.cb_status.Location = new System.Drawing.Point(490, 89);
+            this.cb_status.Location = new System.Drawing.Point(490, 146);
             this.cb_status.Name = "cb_status";
             this.cb_status.Size = new System.Drawing.Size(121, 23);
-            this.cb_status.TabIndex = 3;
+            this.cb_status.TabIndex = 4;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(364, 71);
+            this.label4.Location = new System.Drawing.Point(364, 128);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(72, 15);
             this.label4.TabIndex = 14;
@@ -195,16 +198,34 @@
             // 
             // n_maxPeople
             // 
-            this.n_maxPeople.Location = new System.Drawing.Point(364, 89);
+            this.n_maxPeople.Location = new System.Drawing.Point(364, 146);
             this.n_maxPeople.Name = "n_maxPeople";
             this.n_maxPeople.Size = new System.Drawing.Size(120, 23);
-            this.n_maxPeople.TabIndex = 2;
+            this.n_maxPeople.TabIndex = 3;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(363, 12);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(70, 15);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "Team Name";
+            // 
+            // tb_descTeam
+            // 
+            this.tb_descTeam.Location = new System.Drawing.Point(363, 30);
+            this.tb_descTeam.Name = "tb_descTeam";
+            this.tb_descTeam.Size = new System.Drawing.Size(248, 23);
+            this.tb_descTeam.TabIndex = 1;
             // 
             // F_Teams
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(623, 444);
+            this.Controls.Add(this.tb_descTeam);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.n_maxPeople);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cb_status);
@@ -246,5 +267,7 @@
         private ComboBox cb_status;
         private Label label4;
         private NumericUpDown n_maxPeople;
+        private Label label5;
+        private TextBox tb_descTeam;
     }
 }

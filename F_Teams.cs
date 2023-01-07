@@ -1,7 +1,11 @@
-﻿namespace gym_management
+﻿using System.Data;
+
+namespace gym_management
 {
     public partial class F_Teams : Form
     {
+        string idSelected;
+
         public F_Teams()
         {
             InitializeComponent();
@@ -63,6 +67,34 @@
             cb_time.DisplayMember = "T_DESC";
             cb_time.ValueMember = "N_IDSCHEDULE";
 
+        }
+
+        private void dgv_teams_SelectionChanged(object sender, EventArgs e)
+        {
+            DataGridView dgv = (DataGridView)sender;
+            int countLine = dgv.SelectedRows.Count;
+
+            if (countLine > 0)
+            {
+                idSelected = dgv_teams.Rows[dgv_teams.SelectedRows[0].Index].Cells[0].Value.ToString();
+                string vqueryField = @"
+                    SELECT
+                        T_DESCTEAM,
+                        N_IDCOACH,
+                        N_IDTIME,
+                        N_MAXCUSTOMER,
+                        T_STATUS
+                    FROM
+                        tb_teams
+                    WHERE
+                        N_IDTEAM=" + idSelected;
+                DataTable dt = Database.dql(vqueryField);
+                tb_descTeam.Text = dt.Rows[0].Field<string>("T_DESCTEAM");
+                cb_coach.SelectedValue = dt.Rows[0].Field<Int64>("N_IDCOACH").ToString();
+                n_maxPeople.Value = dt.Rows[0].Field<Int64>("N_MAXCUSTOMER");
+                cb_status.SelectedValue = dt.Rows[0].Field<string>("T_STATUS");
+                cb_time.SelectedValue = dt.Rows[0].Field<Int64>("N_IDTIME");
+            }
         }
     }
 }
