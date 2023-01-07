@@ -63,7 +63,6 @@
             cb_time.DisplayMember = "T_DESC";
             cb_time.ValueMember = "N_IDSCHEDULE";
 
-
         }
     }
 }
