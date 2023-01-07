@@ -113,14 +113,20 @@ namespace gym_management
 
         private void btn_saveTeam_Click(object sender, EventArgs e)
         {
-            if (mode != 0)
+            if (tb_descTeam.Text == "" || cb_coach.Text == "" || n_maxPeople.Value == 0 || cb_status.Text == "" || cb_time.Text == "")
             {
-                string queryTeam = "";
-                string msg = "";
-                if (mode == 1)
+                MessageBox.Show("Please fill all the required spaces", "Attention!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                if (mode != 0)
                 {
-                    msg = "Data updated";
-                    queryTeam = String.Format(@"
+                    string queryTeam = "";
+                    string msg = "";
+                    if (mode == 1)
+                    {
+                        msg = "Data updated";
+                        queryTeam = String.Format(@"
                     UPDATE
                         tb_teams
                     SET
@@ -131,29 +137,30 @@ namespace gym_management
                         T_STATUS='{4}'
                     WHERE
                         N_IDTEAM={5}", tb_descTeam.Text, cb_coach.SelectedValue, cb_time.SelectedValue, Int32.Parse(Math.Round(n_maxPeople.Value).ToString()), cb_status.SelectedValue, idSelected);
-                }
-                else
-                {
-                    msg = "New team created";
-                    queryTeam = String.Format(@"
+                    }
+                    else
+                    {
+                        msg = "New team created";
+                        queryTeam = String.Format(@"
                         INSERT INTO tb_teams
                         (T_DESCTEAM, N_IDCOACH, N_IDTIME, N_MAXCUSTOMER, T_STATUS)
                         VALUES('{0}',{1},{2},{3},'{4}')", tb_descTeam.Text, cb_coach.SelectedValue, cb_time.SelectedValue, Int32.Parse(Math.Round(n_maxPeople.Value).ToString()), cb_status.SelectedValue);
-                }
-                int line = dgv_teams.SelectedRows[0].Index;
-                Database.dml(queryTeam);
+                    }
+                    int line = dgv_teams.SelectedRows[0].Index;
+                    Database.dml(queryTeam);
 
-                if (mode == 1)
-                {
-                    dgv_teams[1, line].Value = tb_descTeam.Text;
-                    dgv_teams[2, line].Value = cb_time.Text;
-                }
-                else
-                {
-                    dgv_teams.DataSource = Database.dql(vqueryDGV);
-                }
+                    if (mode == 1)
+                    {
+                        dgv_teams[1, line].Value = tb_descTeam.Text;
+                        dgv_teams[2, line].Value = cb_time.Text;
+                    }
+                    else
+                    {
+                        dgv_teams.DataSource = Database.dql(vqueryDGV);
+                    }
 
-                MessageBox.Show(msg, "Successfully saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(msg, "Successfully saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
         }
 
