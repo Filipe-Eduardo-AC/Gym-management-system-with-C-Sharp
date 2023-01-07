@@ -81,5 +81,11 @@ namespace gym_management
             F_Coaches f_Coaches = new F_Coaches();
             openForm(2, f_Coaches);
         }
+
+        private void teamsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            F_Teams f_Teams = new F_Teams();
+            openForm(2, f_Teams);
+        }
     }
 }
