@@ -1,4 +1,7 @@
-﻿using System.Data;
+﻿using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.Data;
+using System.Diagnostics;
 
 namespace gym_management
 {
@@ -251,5 +254,75 @@ namespace gym_management
                 mode = 1;
             }
         }
+
+        private void btn_printTeam_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string fileName = Global.path + @"\Teams.pdf";
+                FileStream filePDF = new FileStream(fileName, FileMode.Create);
+                Document doc = new Document(PageSize.A4);
+                PdfWriter escritoPDF = PdfWriter.GetInstance(doc, filePDF);
+
+                //iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(Global.path + @"\logo-c#.png");
+                //logo.ScaleToFit(140f, 120f);
+                //logo.Alignment = Element.ALIGN_LEFT;
+                //logo.SetAbsolutePosition(100f, 700f); //X, -Y (Valor do Y É invertido)
+
+                string data = "";
+                //Paragrafo1
+                Paragraph p1 = new Paragraph(data, new iTextSharp.text.Font(iTextSharp.text.Font.NORMAL, 20, (int)System.Drawing.FontStyle.Bold));
+                p1.Alignment = Element.ALIGN_CENTER;
+                p1.Add("Teams Report\n\n");
+
+                //Paragrafo2
+                Paragraph p2 = new Paragraph(data, new iTextSharp.text.Font(iTextSharp.text.Font.NORMAL, 14, (int)System.Drawing.FontStyle.Bold));
+                p2.Alignment = Element.ALIGN_CENTER;
+                p2.Add("Gym Management System with C#\n Made by: Filipe Eduardo");
+
+                //Criação de Tabela
+
+                PdfPTable table = new PdfPTable(3);// 3Colunas
+                table.DefaultCell.FixedHeight = 20;
+
+                table.AddCell("Team ID");
+                table.AddCell("Team");
+                table.AddCell("Time");
+
+                DataTable dtTeams = Database.dql(vqueryDGV);
+                for (int i = 0; i < dtTeams.Rows.Count; i++)
+                {
+                    table.AddCell(dtTeams.Rows[i].Field<Int64>("ID").ToString());
+                    table.AddCell(dtTeams.Rows[i].Field<string>("Team"));
+                    table.AddCell(dtTeams.Rows[i].Field<string>("Time"));
+                }
+
+
+                doc.Open();
+                //doc.Add(logo);
+                doc.Add(p1);
+                doc.Add(table);
+                doc.Add(p2);
+                doc.Close();
+
+                DialogResult res = MessageBox.Show("Do you wish to print the report?", "Print", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (res == DialogResult.Yes)
+                {
+                    var p = new Process();
+                    p.StartInfo = new ProcessStartInfo(fileName)
+                    {
+                        UseShellExecute = true
+                    };
+                    p.Start();
+                    //string fName = "Teams.pdf";
+                    //System.Diagnostics.Process.Start(fName);
+                }
+            }
+            catch (IOException)
+            {
+                MessageBox.Show("PDF file open! Please close it and print again");
+            }
+        }
     }
 }
+
