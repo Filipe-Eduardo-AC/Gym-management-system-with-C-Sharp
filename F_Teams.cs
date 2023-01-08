@@ -320,7 +320,7 @@ namespace gym_management
             }
             catch (IOException)
             {
-                MessageBox.Show("PDF file open! Please close it and print again");
+                MessageBox.Show("PDF file open! Please close it and print again.");
             }
         }
     }
