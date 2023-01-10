@@ -2,6 +2,11 @@
 {
     public partial class F_NewCustomer : Form
     {
+        string originComplete = "";
+        string picture = "";
+        string destinyFolder = Global.pathPictures;
+        string destinyComplete = "";
+
         public F_NewCustomer()
         {
             InitializeComponent();
@@ -78,6 +83,38 @@
         private void btn_close_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void btn_addPic_Click(object sender, EventArgs e)
+        {
+            originComplete = "";
+            picture = "";
+            destinyFolder = Global.pathPictures;
+            destinyComplete = "";
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                originComplete = openFileDialog1.FileName;
+                picture = openFileDialog1.SafeFileName;
+                destinyComplete = destinyFolder + picture;
+            }
+            if (File.Exists(destinyComplete))
+            {
+                if (MessageBox.Show("File already exists, wish to replace it?", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+                {
+                    return;
+                }
+            }
+            System.IO.File.Copy(originComplete, destinyComplete, true);
+
+            if (File.Exists(destinyComplete))
+            {
+                pb_photo.ImageLocation = destinyComplete;
+            }
+            else
+            {
+                MessageBox.Show("File not copied", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }

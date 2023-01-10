@@ -45,7 +45,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.pb_photo = new System.Windows.Forms.PictureBox();
+            this.btn_addPic = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_photo)).BeginInit();
             this.SuspendLayout();
             // 
             // tb_name
@@ -138,14 +142,14 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 184);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(409, 30);
+            this.panel1.Size = new System.Drawing.Size(497, 30);
             this.panel1.TabIndex = 9;
             // 
             // btn_close
             // 
-            this.btn_close.Location = new System.Drawing.Point(306, 3);
+            this.btn_close.Location = new System.Drawing.Point(401, 3);
             this.btn_close.Name = "btn_close";
-            this.btn_close.Size = new System.Drawing.Size(95, 23);
+            this.btn_close.Size = new System.Drawing.Size(86, 23);
             this.btn_close.TabIndex = 16;
             this.btn_close.Text = "Close";
             this.btn_close.UseVisualStyleBackColor = true;
@@ -210,11 +214,38 @@
             this.label5.TabIndex = 12;
             this.label5.Text = "Status";
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.Filter = "JPG(*.jpg)|*.jpg|PNG(*.png)|*png";
+            // 
+            // pb_photo
+            // 
+            this.pb_photo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pb_photo.Location = new System.Drawing.Point(401, 49);
+            this.pb_photo.Name = "pb_photo";
+            this.pb_photo.Size = new System.Drawing.Size(85, 113);
+            this.pb_photo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb_photo.TabIndex = 13;
+            this.pb_photo.TabStop = false;
+            // 
+            // btn_addPic
+            // 
+            this.btn_addPic.Location = new System.Drawing.Point(401, 20);
+            this.btn_addPic.Name = "btn_addPic";
+            this.btn_addPic.Size = new System.Drawing.Size(85, 23);
+            this.btn_addPic.TabIndex = 14;
+            this.btn_addPic.Text = "Add Picture";
+            this.btn_addPic.UseVisualStyleBackColor = true;
+            this.btn_addPic.Click += new System.EventHandler(this.btn_addPic_Click);
+            // 
             // F_NewCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(409, 214);
+            this.ClientSize = new System.Drawing.Size(497, 214);
+            this.Controls.Add(this.btn_addPic);
+            this.Controls.Add(this.pb_photo);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -232,6 +263,7 @@
             this.Text = "New Customer";
             this.Load += new System.EventHandler(this.F_NewCustomer_Load);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pb_photo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -256,5 +288,8 @@
         private Label label4;
         private Label label5;
         public TextBox tb_team;
+        private OpenFileDialog openFileDialog1;
+        private PictureBox pb_photo;
+        private Button btn_addPic;
     }
 }

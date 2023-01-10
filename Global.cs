@@ -8,6 +8,7 @@
         public static string path = System.Environment.CurrentDirectory;
         public static string nameDatabase = "db_gym.db";
         public static string pathDatabase = path + @"\database\";
+        public static string pathPictures = path + @"\pictures\";
 
         /*
         tb_users
