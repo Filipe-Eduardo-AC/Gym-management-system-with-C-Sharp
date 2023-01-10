@@ -61,7 +61,8 @@ namespace gym_management
 
         private void newCustomerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // openForm();
+            F_NewCustomer f_NewCustomer = new F_NewCustomer();
+            openForm(1, f_NewCustomer);
         }
 
         private void userManagementToolStripMenuItem_Click(object sender, EventArgs e)

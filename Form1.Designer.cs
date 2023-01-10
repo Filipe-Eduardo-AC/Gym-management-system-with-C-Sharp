@@ -45,10 +45,11 @@
             this.databaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.scheduleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.coachesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.teamsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.profileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoffToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.teamsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.customerManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_ledlogged)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -131,7 +132,8 @@
             // customersToolStripMenuItem
             // 
             this.customersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newCustomerToolStripMenuItem});
+            this.newCustomerToolStripMenuItem,
+            this.customerManagementToolStripMenuItem});
             this.customersToolStripMenuItem.Name = "customersToolStripMenuItem";
             this.customersToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
             this.customersToolStripMenuItem.Text = "Customers";
@@ -139,8 +141,8 @@
             // newCustomerToolStripMenuItem
             // 
             this.newCustomerToolStripMenuItem.Name = "newCustomerToolStripMenuItem";
-            this.newCustomerToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
-            this.newCustomerToolStripMenuItem.Text = "New customer";
+            this.newCustomerToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.newCustomerToolStripMenuItem.Text = "New Customer";
             this.newCustomerToolStripMenuItem.Click += new System.EventHandler(this.newCustomerToolStripMenuItem_Click);
             // 
             // usersToolStripMenuItem
@@ -156,19 +158,19 @@
             // newUserToolStripMenuItem
             // 
             this.newUserToolStripMenuItem.Name = "newUserToolStripMenuItem";
-            this.newUserToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.newUserToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.newUserToolStripMenuItem.Text = "New User";
             this.newUserToolStripMenuItem.Click += new System.EventHandler(this.newUserToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(168, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
             // 
             // userManagementToolStripMenuItem
             // 
             this.userManagementToolStripMenuItem.Name = "userManagementToolStripMenuItem";
-            this.userManagementToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.userManagementToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.userManagementToolStripMenuItem.Text = "User Management";
             this.userManagementToolStripMenuItem.Click += new System.EventHandler(this.userManagementToolStripMenuItem_Click);
             // 
@@ -204,6 +206,13 @@
             this.coachesToolStripMenuItem.Text = "Coaches";
             this.coachesToolStripMenuItem.Click += new System.EventHandler(this.coachesToolStripMenuItem_Click);
             // 
+            // teamsToolStripMenuItem
+            // 
+            this.teamsToolStripMenuItem.Name = "teamsToolStripMenuItem";
+            this.teamsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.teamsToolStripMenuItem.Text = "Teams";
+            this.teamsToolStripMenuItem.Click += new System.EventHandler(this.teamsToolStripMenuItem_Click);
+            // 
             // profileToolStripMenuItem
             // 
             this.profileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -216,23 +225,22 @@
             // logonToolStripMenuItem
             // 
             this.logonToolStripMenuItem.Name = "logonToolStripMenuItem";
-            this.logonToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
+            this.logonToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.logonToolStripMenuItem.Text = "Logon";
             this.logonToolStripMenuItem.Click += new System.EventHandler(this.logonToolStripMenuItem_Click);
             // 
             // logoffToolStripMenuItem
             // 
             this.logoffToolStripMenuItem.Name = "logoffToolStripMenuItem";
-            this.logoffToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
+            this.logoffToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.logoffToolStripMenuItem.Text = "Logoff";
             this.logoffToolStripMenuItem.Click += new System.EventHandler(this.logoffToolStripMenuItem_Click);
             // 
-            // teamsToolStripMenuItem
+            // customerManagementToolStripMenuItem
             // 
-            this.teamsToolStripMenuItem.Name = "teamsToolStripMenuItem";
-            this.teamsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.teamsToolStripMenuItem.Text = "Teams";
-            this.teamsToolStripMenuItem.Click += new System.EventHandler(this.teamsToolStripMenuItem_Click);
+            this.customerManagementToolStripMenuItem.Name = "customerManagementToolStripMenuItem";
+            this.customerManagementToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.customerManagementToolStripMenuItem.Text = "Customer Management";
             // 
             // Form1
             // 
@@ -278,5 +286,6 @@
         private ToolStripMenuItem scheduleToolStripMenuItem;
         private ToolStripMenuItem coachesToolStripMenuItem;
         private ToolStripMenuItem teamsToolStripMenuItem;
+        private ToolStripMenuItem customerManagementToolStripMenuItem;
     }
 }
