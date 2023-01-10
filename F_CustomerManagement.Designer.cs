@@ -28,9 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgv_customer = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_close = new System.Windows.Forms.Button();
+            this.btn_save = new System.Windows.Forms.Button();
+            this.btn_financial = new System.Windows.Forms.Button();
+            this.btn_delete = new System.Windows.Forms.Button();
             this.tb_name = new System.Windows.Forms.TextBox();
             this.mtb_phone = new System.Windows.Forms.MaskedTextBox();
             this.cb_status = new System.Windows.Forms.ComboBox();
@@ -41,10 +45,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.btn_print = new System.Windows.Forms.Button();
-            this.btn_save = new System.Windows.Forms.Button();
-            this.btn_delete = new System.Windows.Forms.Button();
-            this.btn_financial = new System.Windows.Forms.Button();
-            this.btn_close = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_customer)).BeginInit();
             this.panel1.SuspendLayout();
@@ -55,14 +55,16 @@
             // 
             this.dgv_customer.AllowUserToAddRows = false;
             this.dgv_customer.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_customer.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgv_customer.AllowUserToResizeColumns = false;
+            this.dgv_customer.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_customer.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_customer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_customer.EnableHeadersVisualStyles = false;
             this.dgv_customer.Location = new System.Drawing.Point(12, 12);
@@ -74,6 +76,7 @@
             this.dgv_customer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_customer.Size = new System.Drawing.Size(277, 416);
             this.dgv_customer.TabIndex = 30;
+            this.dgv_customer.SelectionChanged += new System.EventHandler(this.dgv_customer_SelectionChanged);
             // 
             // panel1
             // 
@@ -87,6 +90,45 @@
             this.panel1.Size = new System.Drawing.Size(554, 30);
             this.panel1.TabIndex = 31;
             // 
+            // btn_close
+            // 
+            this.btn_close.Location = new System.Drawing.Point(417, 3);
+            this.btn_close.Name = "btn_close";
+            this.btn_close.Size = new System.Drawing.Size(132, 23);
+            this.btn_close.TabIndex = 45;
+            this.btn_close.Text = "Close";
+            this.btn_close.UseVisualStyleBackColor = true;
+            this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
+            // 
+            // btn_save
+            // 
+            this.btn_save.Location = new System.Drawing.Point(3, 3);
+            this.btn_save.Name = "btn_save";
+            this.btn_save.Size = new System.Drawing.Size(132, 23);
+            this.btn_save.TabIndex = 42;
+            this.btn_save.Text = "Save Changes";
+            this.btn_save.UseVisualStyleBackColor = true;
+            this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
+            // 
+            // btn_financial
+            // 
+            this.btn_financial.Location = new System.Drawing.Point(279, 3);
+            this.btn_financial.Name = "btn_financial";
+            this.btn_financial.Size = new System.Drawing.Size(132, 23);
+            this.btn_financial.TabIndex = 44;
+            this.btn_financial.Text = "Financial";
+            this.btn_financial.UseVisualStyleBackColor = true;
+            // 
+            // btn_delete
+            // 
+            this.btn_delete.Location = new System.Drawing.Point(141, 3);
+            this.btn_delete.Name = "btn_delete";
+            this.btn_delete.Size = new System.Drawing.Size(132, 23);
+            this.btn_delete.TabIndex = 43;
+            this.btn_delete.Text = "Delete Customer";
+            this.btn_delete.UseVisualStyleBackColor = true;
+            this.btn_delete.Click += new System.EventHandler(this.btn_delete_Click);
+            // 
             // tb_name
             // 
             this.tb_name.Location = new System.Drawing.Point(299, 33);
@@ -97,7 +139,7 @@
             // mtb_phone
             // 
             this.mtb_phone.Location = new System.Drawing.Point(299, 93);
-            this.mtb_phone.Mask = "(00) 00000-00000";
+            this.mtb_phone.Mask = "(00) 00000-0000";
             this.mtb_phone.Name = "mtb_phone";
             this.mtb_phone.Size = new System.Drawing.Size(99, 23);
             this.mtb_phone.TabIndex = 33;
@@ -172,42 +214,6 @@
             this.btn_print.Text = "Print ID";
             this.btn_print.UseVisualStyleBackColor = true;
             this.btn_print.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btn_save
-            // 
-            this.btn_save.Location = new System.Drawing.Point(3, 3);
-            this.btn_save.Name = "btn_save";
-            this.btn_save.Size = new System.Drawing.Size(132, 23);
-            this.btn_save.TabIndex = 42;
-            this.btn_save.Text = "Save Changes";
-            this.btn_save.UseVisualStyleBackColor = true;
-            // 
-            // btn_delete
-            // 
-            this.btn_delete.Location = new System.Drawing.Point(141, 3);
-            this.btn_delete.Name = "btn_delete";
-            this.btn_delete.Size = new System.Drawing.Size(132, 23);
-            this.btn_delete.TabIndex = 43;
-            this.btn_delete.Text = "Delete Customer";
-            this.btn_delete.UseVisualStyleBackColor = true;
-            // 
-            // btn_financial
-            // 
-            this.btn_financial.Location = new System.Drawing.Point(279, 3);
-            this.btn_financial.Name = "btn_financial";
-            this.btn_financial.Size = new System.Drawing.Size(132, 23);
-            this.btn_financial.TabIndex = 44;
-            this.btn_financial.Text = "Financial";
-            this.btn_financial.UseVisualStyleBackColor = true;
-            // 
-            // btn_close
-            // 
-            this.btn_close.Location = new System.Drawing.Point(417, 3);
-            this.btn_close.Name = "btn_close";
-            this.btn_close.Size = new System.Drawing.Size(132, 23);
-            this.btn_close.TabIndex = 45;
-            this.btn_close.Text = "Close";
-            this.btn_close.UseVisualStyleBackColor = true;
             // 
             // pictureBox1
             // 
