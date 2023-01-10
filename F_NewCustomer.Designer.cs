@@ -34,16 +34,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cb_status = new System.Windows.Forms.ComboBox();
             this.tb_team = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.btn_selTeam = new System.Windows.Forms.Button();
-            this.btn_selPlan = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btn_close = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
             this.btn_save = new System.Windows.Forms.Button();
             this.btn_new = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.pb_photo = new System.Windows.Forms.PictureBox();
@@ -91,47 +88,29 @@
             // 
             this.cb_status.Enabled = false;
             this.cb_status.FormattingEnabled = true;
-            this.cb_status.Location = new System.Drawing.Point(12, 86);
+            this.cb_status.Location = new System.Drawing.Point(12, 95);
             this.cb_status.Name = "cb_status";
             this.cb_status.Size = new System.Drawing.Size(108, 23);
             this.cb_status.TabIndex = 4;
             // 
             // tb_team
             // 
-            this.tb_team.Location = new System.Drawing.Point(126, 86);
+            this.tb_team.Location = new System.Drawing.Point(126, 95);
             this.tb_team.Name = "tb_team";
             this.tb_team.ReadOnly = true;
             this.tb_team.Size = new System.Drawing.Size(260, 23);
             this.tb_team.TabIndex = 5;
             this.tb_team.TabStop = false;
             // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(12, 140);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(260, 23);
-            this.textBox3.TabIndex = 6;
-            this.textBox3.TabStop = false;
-            // 
             // btn_selTeam
             // 
-            this.btn_selTeam.Location = new System.Drawing.Point(359, 86);
+            this.btn_selTeam.Location = new System.Drawing.Point(359, 95);
             this.btn_selTeam.Name = "btn_selTeam";
             this.btn_selTeam.Size = new System.Drawing.Size(27, 23);
             this.btn_selTeam.TabIndex = 7;
             this.btn_selTeam.Text = "...";
             this.btn_selTeam.UseVisualStyleBackColor = true;
             this.btn_selTeam.Click += new System.EventHandler(this.btn_selTeam_Click);
-            // 
-            // btn_selPlan
-            // 
-            this.btn_selPlan.Location = new System.Drawing.Point(245, 140);
-            this.btn_selPlan.Name = "btn_selPlan";
-            this.btn_selPlan.Size = new System.Drawing.Size(27, 23);
-            this.btn_selPlan.TabIndex = 8;
-            this.btn_selPlan.Text = "...";
-            this.btn_selPlan.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
@@ -140,7 +119,7 @@
             this.panel1.Controls.Add(this.btn_save);
             this.panel1.Controls.Add(this.btn_new);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 184);
+            this.panel1.Location = new System.Drawing.Point(0, 162);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(497, 30);
             this.panel1.TabIndex = 9;
@@ -190,25 +169,16 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(126, 68);
+            this.label3.Location = new System.Drawing.Point(126, 77);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(35, 15);
             this.label3.TabIndex = 10;
             this.label3.Text = "Team";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 122);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(30, 15);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "Plan";
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 68);
+            this.label5.Location = new System.Drawing.Point(12, 77);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(39, 15);
             this.label5.TabIndex = 12;
@@ -222,7 +192,7 @@
             // pb_photo
             // 
             this.pb_photo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pb_photo.Location = new System.Drawing.Point(401, 49);
+            this.pb_photo.Location = new System.Drawing.Point(400, 41);
             this.pb_photo.Name = "pb_photo";
             this.pb_photo.Size = new System.Drawing.Size(85, 113);
             this.pb_photo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -231,7 +201,7 @@
             // 
             // btn_addPic
             // 
-            this.btn_addPic.Location = new System.Drawing.Point(401, 20);
+            this.btn_addPic.Location = new System.Drawing.Point(400, 12);
             this.btn_addPic.Name = "btn_addPic";
             this.btn_addPic.Size = new System.Drawing.Size(85, 23);
             this.btn_addPic.TabIndex = 14;
@@ -243,16 +213,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(497, 214);
+            this.ClientSize = new System.Drawing.Size(497, 192);
             this.Controls.Add(this.btn_addPic);
             this.Controls.Add(this.pb_photo);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.btn_selPlan);
             this.Controls.Add(this.btn_selTeam);
-            this.Controls.Add(this.textBox3);
             this.Controls.Add(this.tb_team);
             this.Controls.Add(this.cb_status);
             this.Controls.Add(this.label2);
@@ -276,16 +243,13 @@
         private Label label1;
         private Label label2;
         private ComboBox cb_status;
-        private TextBox textBox3;
         private Button btn_selTeam;
-        private Button btn_selPlan;
         private Panel panel1;
         private Button btn_close;
         private Button btn_cancel;
         private Button btn_save;
         private Button btn_new;
         private Label label3;
-        private Label label4;
         private Label label5;
         public TextBox tb_team;
         private OpenFileDialog openFileDialog1;

@@ -43,7 +43,6 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.userManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.maintenanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.databaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.scheduleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.coachesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.teamsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -184,7 +183,6 @@
             // maintenanceToolStripMenuItem
             // 
             this.maintenanceToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.databaseToolStripMenuItem,
             this.scheduleToolStripMenuItem,
             this.coachesToolStripMenuItem,
             this.teamsToolStripMenuItem});
@@ -192,31 +190,24 @@
             this.maintenanceToolStripMenuItem.Size = new System.Drawing.Size(88, 20);
             this.maintenanceToolStripMenuItem.Text = "Maintenance";
             // 
-            // databaseToolStripMenuItem
-            // 
-            this.databaseToolStripMenuItem.Name = "databaseToolStripMenuItem";
-            this.databaseToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
-            this.databaseToolStripMenuItem.Text = "Database";
-            this.databaseToolStripMenuItem.Click += new System.EventHandler(this.databaseToolStripMenuItem_Click);
-            // 
             // scheduleToolStripMenuItem
             // 
             this.scheduleToolStripMenuItem.Name = "scheduleToolStripMenuItem";
-            this.scheduleToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.scheduleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.scheduleToolStripMenuItem.Text = "Schedule";
             this.scheduleToolStripMenuItem.Click += new System.EventHandler(this.scheduleToolStripMenuItem_Click);
             // 
             // coachesToolStripMenuItem
             // 
             this.coachesToolStripMenuItem.Name = "coachesToolStripMenuItem";
-            this.coachesToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.coachesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.coachesToolStripMenuItem.Text = "Coaches";
             this.coachesToolStripMenuItem.Click += new System.EventHandler(this.coachesToolStripMenuItem_Click);
             // 
             // teamsToolStripMenuItem
             // 
             this.teamsToolStripMenuItem.Name = "teamsToolStripMenuItem";
-            this.teamsToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.teamsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.teamsToolStripMenuItem.Text = "Teams";
             this.teamsToolStripMenuItem.Click += new System.EventHandler(this.teamsToolStripMenuItem_Click);
             // 
@@ -283,7 +274,6 @@
         private ToolStripSeparator toolStripMenuItem1;
         private ToolStripMenuItem userManagementToolStripMenuItem;
         private ToolStripMenuItem maintenanceToolStripMenuItem;
-        private ToolStripMenuItem databaseToolStripMenuItem;
         private ToolStripMenuItem scheduleToolStripMenuItem;
         private ToolStripMenuItem coachesToolStripMenuItem;
         private ToolStripMenuItem teamsToolStripMenuItem;

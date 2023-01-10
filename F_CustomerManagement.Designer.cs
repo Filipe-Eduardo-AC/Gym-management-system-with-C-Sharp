@@ -28,12 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgv_customer = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btn_close = new System.Windows.Forms.Button();
             this.btn_save = new System.Windows.Forms.Button();
-            this.btn_financial = new System.Windows.Forms.Button();
             this.btn_delete = new System.Windows.Forms.Button();
             this.tb_name = new System.Windows.Forms.TextBox();
             this.mtb_phone = new System.Windows.Forms.MaskedTextBox();
@@ -44,11 +43,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.btn_print = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pb_photo = new System.Windows.Forms.PictureBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_customer)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_photo)).BeginInit();
             this.SuspendLayout();
             // 
             // dgv_customer
@@ -57,14 +56,14 @@
             this.dgv_customer.AllowUserToDeleteRows = false;
             this.dgv_customer.AllowUserToResizeColumns = false;
             this.dgv_customer.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_customer.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_customer.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_customer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_customer.EnableHeadersVisualStyles = false;
             this.dgv_customer.Location = new System.Drawing.Point(12, 12);
@@ -82,7 +81,6 @@
             // 
             this.panel1.Controls.Add(this.btn_close);
             this.panel1.Controls.Add(this.btn_save);
-            this.panel1.Controls.Add(this.btn_financial);
             this.panel1.Controls.Add(this.btn_delete);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 434);
@@ -92,9 +90,9 @@
             // 
             // btn_close
             // 
-            this.btn_close.Location = new System.Drawing.Point(417, 3);
+            this.btn_close.Location = new System.Drawing.Point(450, 3);
             this.btn_close.Name = "btn_close";
-            this.btn_close.Size = new System.Drawing.Size(132, 23);
+            this.btn_close.Size = new System.Drawing.Size(99, 23);
             this.btn_close.TabIndex = 45;
             this.btn_close.Text = "Close";
             this.btn_close.UseVisualStyleBackColor = true;
@@ -109,15 +107,6 @@
             this.btn_save.Text = "Save Changes";
             this.btn_save.UseVisualStyleBackColor = true;
             this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
-            // 
-            // btn_financial
-            // 
-            this.btn_financial.Location = new System.Drawing.Point(279, 3);
-            this.btn_financial.Name = "btn_financial";
-            this.btn_financial.Size = new System.Drawing.Size(132, 23);
-            this.btn_financial.TabIndex = 44;
-            this.btn_financial.Text = "Financial";
-            this.btn_financial.UseVisualStyleBackColor = true;
             // 
             // btn_delete
             // 
@@ -199,39 +188,35 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(299, 344);
+            this.label5.Location = new System.Drawing.Point(299, 310);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(170, 15);
             this.label5.TabIndex = 40;
             this.label5.Text = "Double Click to change picture";
+            this.label5.DoubleClick += new System.EventHandler(this.pb_photo_DoubleClick);
             // 
-            // btn_print
+            // pb_photo
             // 
-            this.btn_print.Location = new System.Drawing.Point(299, 199);
-            this.btn_print.Name = "btn_print";
-            this.btn_print.Size = new System.Drawing.Size(243, 23);
-            this.btn_print.TabIndex = 41;
-            this.btn_print.Text = "Print ID";
-            this.btn_print.UseVisualStyleBackColor = true;
-            this.btn_print.Click += new System.EventHandler(this.button1_Click);
+            this.pb_photo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pb_photo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pb_photo.Location = new System.Drawing.Point(299, 194);
+            this.pb_photo.Name = "pb_photo";
+            this.pb_photo.Size = new System.Drawing.Size(85, 113);
+            this.pb_photo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb_photo.TabIndex = 42;
+            this.pb_photo.TabStop = false;
+            this.pb_photo.DoubleClick += new System.EventHandler(this.pb_photo_DoubleClick);
             // 
-            // pictureBox1
+            // openFileDialog1
             // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(299, 228);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(85, 113);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 42;
-            this.pictureBox1.TabStop = false;
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // F_CustomerManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(554, 464);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.btn_print);
+            this.Controls.Add(this.pb_photo);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -248,7 +233,7 @@
             this.Load += new System.EventHandler(this.F_CustomerManagement_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_customer)).EndInit();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_photo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -267,11 +252,10 @@
         private Label label3;
         private Label label4;
         private Label label5;
-        private Button btn_print;
         private Button btn_close;
         private Button btn_save;
-        private Button btn_financial;
         private Button btn_delete;
-        private PictureBox pictureBox1;
+        private PictureBox pb_photo;
+        private OpenFileDialog openFileDialog1;
     }
 }

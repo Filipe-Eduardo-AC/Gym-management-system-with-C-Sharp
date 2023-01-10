@@ -10,14 +10,14 @@ namespace gym_management
         string team = "";
         int line = 0;
 
+        string originComplete = "";
+        string picture = "";
+        string destinyFolder = Global.pathPictures;
+        string destinyComplete = "";
+
         public F_CustomerManagement()
         {
             InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void F_CustomerManagement_Load(object sender, EventArgs e)
@@ -76,12 +76,35 @@ namespace gym_management
 
         private void btn_save_Click(object sender, EventArgs e)
         {
+            if (destinyComplete == "")
+            {
+                if (MessageBox.Show("There is no picture selected, continue anyway?", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+                {
+                    return;
+                }
+            }
+            if (destinyComplete != "")
+            {
+                System.IO.File.Copy(originComplete, destinyComplete, true);
+                if (File.Exists(destinyComplete))
+                {
+                    pb_photo.ImageLocation = destinyComplete;
+                }
+                else
+                {
+                    if (MessageBox.Show("Picture was not found, continue anyway?", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+                    {
+                        return;
+                    }
+                }
+            }
+
             team = cb_teams.Text;
 
             if (currentTeam != team)
             {
                 string[] t = team.Split(' ');
-                int spaces = int.Parse(t[1]);
+                int spaces = int.Parse(t[2]);
 
                 if (spaces < 1)
                 {
@@ -97,13 +120,31 @@ namespace gym_management
                         T_NAMECUSTOMER ='{0}',
                         T_PHONE ='{1}',
                         T_STATUS ='{2}',
-                        N_IDTEAM ='{3}'
+                        N_IDTEAM ='{3}',
+                        T_PICTURE = '{4}'
                     WHERE
-                        N_IDCUSTOMER ={4}
-                ", tb_name.Text, mtb_phone.Text, cb_status.SelectedValue, cb_teams.SelectedValue, selectedId);
+                        N_IDCUSTOMER ={5}
+                ", tb_name.Text, mtb_phone.Text, cb_status.SelectedValue, cb_teams.SelectedValue, destinyComplete, selectedId);
                 Database.dml(queryUpdateCustomer);
                 MessageBox.Show("Changes Saved", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 //dgv_customer[1, line].Value = tb_name.Text;
+            }
+            if (currentTeam == team)
+            {
+                string queryUpdateCustomer = String.Format(@"
+                    UPDATE
+                        tb_customers
+                    SET
+                        T_NAMECUSTOMER ='{0}',
+                        T_PHONE ='{1}',
+                        T_STATUS ='{2}',
+                        N_IDTEAM ='{3}',
+                        T_PICTURE = '{4}'
+                    WHERE
+                        N_IDCUSTOMER ={5}
+                ", tb_name.Text, mtb_phone.Text, cb_status.SelectedValue, cb_teams.SelectedValue, destinyComplete, selectedId);
+                Database.dml(queryUpdateCustomer);
+                MessageBox.Show("Changes Saved", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -111,6 +152,11 @@ namespace gym_management
         {
             if (MessageBox.Show("Do you wish to delete this customer?", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
+                if (File.Exists(pb_photo.ImageLocation))
+                {
+                    File.Delete(pb_photo.ImageLocation);
+                }
+
                 string vqueryDeleteCustomer = String.Format(@"
                     DELETE FROM
                         tb_customers
@@ -132,6 +178,9 @@ namespace gym_management
 
             if (dgv.SelectedRows.Count > 0)
             {
+                selectedId = dgv_customer.Rows[0].Cells[0].Value.ToString();
+                tb_name.Text = dgv_customer.Rows[dgv_customer.SelectedRows[0].Index].Cells[1].Value.ToString();
+
                 selectedId = dgv.Rows[dgv.SelectedRows[0].Index].Cells[0].Value.ToString();
                 string vqueryFields = String.Format(@"
                     SELECT
@@ -139,7 +188,8 @@ namespace gym_management
                         T_NAMECUSTOMER,
                         T_PHONE,
                         T_STATUS,
-                        N_IDTEAM
+                        N_IDTEAM,
+                        T_PICTURE
                     FROM
                         tb_customers
                     WHERE N_IDCUSTOMER={0}
@@ -150,7 +200,31 @@ namespace gym_management
                 cb_status.SelectedValue = dt.Rows[0].Field<string>("T_STATUS");
                 cb_teams.SelectedValue = dt.Rows[0].Field<Int64>("N_IDTEAM");
                 currentTeam = cb_teams.Text;
+                pb_photo.ImageLocation = dt.Rows[0].Field<string>("T_PICTURE");
             }
+        }
+
+        private void pb_photo_DoubleClick(object sender, EventArgs e)
+        {
+            originComplete = "";
+            picture = "";
+            destinyFolder = Global.pathPictures;
+            destinyComplete = "";
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                originComplete = openFileDialog1.FileName;
+                picture = openFileDialog1.SafeFileName;
+                destinyComplete = destinyFolder + picture;
+            }
+            if (File.Exists(destinyComplete))
+            {
+                if (MessageBox.Show("File already exists, wish to replace it?", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+                {
+                    return;
+                }
+            }
+            pb_photo.ImageLocation = originComplete;
         }
     }
 }
