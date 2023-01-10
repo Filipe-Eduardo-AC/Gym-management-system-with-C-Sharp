@@ -54,48 +54,55 @@
 
         private void btn_save_Click(object sender, EventArgs e)
         {
-            if (destinyComplete == "")
+            if (tb_name.Text == "" || mtb_phone.Text == "(  )      -" || tb_team.Text == "")
             {
-                if (MessageBox.Show("There is no picture selected, continue anyway?", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
-                {
-                    return;
-                }
+                MessageBox.Show("Please fill all the required spaces", "Attention!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            if (destinyComplete != "")
+            else
             {
-                System.IO.File.Copy(originComplete, destinyComplete, true);
-                if (File.Exists(destinyComplete))
+                if (destinyComplete == "")
                 {
-                    pb_photo.ImageLocation = destinyComplete;
-                }
-                else
-                {
-                    if (MessageBox.Show("Picture was not found, continue anyway?", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+                    if (MessageBox.Show("There is no picture selected, continue anyway?", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
                     {
                         return;
                     }
                 }
-            }
+                if (destinyComplete != "")
+                {
+                    System.IO.File.Copy(originComplete, destinyComplete, true);
+                    if (File.Exists(destinyComplete))
+                    {
+                        pb_photo.ImageLocation = destinyComplete;
+                    }
+                    else
+                    {
+                        if (MessageBox.Show("Picture was not found, continue anyway?", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+                        {
+                            return;
+                        }
+                    }
+                }
 
-            string queryInsertCustomer = String.Format(@"
+                string queryInsertCustomer = String.Format(@"
                 INSERT INTO tb_customers
                 (T_NAMECUSTOMER,T_PHONE,T_STATUS,N_IDTEAM,T_PICTURE)
                 VALUES('{0}','{1}','{2}',{3},'{4}')
             ", tb_name.Text, mtb_phone.Text, cb_status.SelectedValue, tb_team.Tag.ToString(), destinyComplete);
-            Database.dml(queryInsertCustomer);
-            MessageBox.Show("New Customer created", "New Customer", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Database.dml(queryInsertCustomer);
+                MessageBox.Show("New Customer created", "New Customer", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            tb_name.Enabled = false;
-            mtb_phone.Enabled = false;
-            cb_status.Enabled = false;
-            tb_name.Clear();
-            mtb_phone.Clear();
-            tb_team.Clear();
-            cb_status.SelectedIndex = 0;
-            btn_save.Enabled = false;
-            btn_cancel.Enabled = false;
-            btn_new.Enabled = true;
-            pb_photo.ImageLocation = destinyComplete;
+                tb_name.Enabled = false;
+                mtb_phone.Enabled = false;
+                cb_status.Enabled = false;
+                tb_name.Clear();
+                mtb_phone.Clear();
+                tb_team.Clear();
+                cb_status.SelectedIndex = 0;
+                btn_save.Enabled = false;
+                btn_cancel.Enabled = false;
+                btn_new.Enabled = true;
+                pb_photo.ImageLocation = destinyComplete;
+            }
         }
 
         private void btn_selTeam_Click(object sender, EventArgs e)

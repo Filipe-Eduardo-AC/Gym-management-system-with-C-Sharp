@@ -76,44 +76,50 @@ namespace gym_management
 
         private void btn_save_Click(object sender, EventArgs e)
         {
-            if (destinyComplete == "")
+            if (tb_name.Text == "" || mtb_phone.Text == "(  )      -")
             {
-                if (MessageBox.Show("There is no picture selected, continue anyway?", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
-                {
-                    return;
-                }
+                MessageBox.Show("Please fill all the required spaces", "Attention!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            if (destinyComplete != "")
+            else
             {
-                System.IO.File.Copy(originComplete, destinyComplete, true);
-                if (File.Exists(destinyComplete))
+                if (destinyComplete == "")
                 {
-                    pb_photo.ImageLocation = destinyComplete;
-                }
-                else
-                {
-                    if (MessageBox.Show("Picture was not found, continue anyway?", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+                    if (MessageBox.Show("There is no picture selected, continue anyway?", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
                     {
                         return;
                     }
                 }
-            }
-
-            team = cb_teams.Text;
-
-            if (currentTeam != team)
-            {
-                string[] t = team.Split(' ');
-                int spaces = int.Parse(t[2]);
-
-                if (spaces < 1)
+                if (destinyComplete != "")
                 {
-                    MessageBox.Show("The selected team is full, please choose another team.", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    cb_teams.Focus();
-                    return;
+                    System.IO.File.Copy(originComplete, destinyComplete, true);
+                    if (File.Exists(destinyComplete))
+                    {
+                        pb_photo.ImageLocation = destinyComplete;
+                    }
+                    else
+                    {
+                        if (MessageBox.Show("Picture was not found, continue anyway?", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+                        {
+                            return;
+                        }
+                    }
                 }
-                //line = dgv_customer.SelectedRows[0].Index;
-                string queryUpdateCustomer = String.Format(@"
+
+                team = cb_teams.Text;
+
+                if (currentTeam != team)
+                {
+                    string[] t = team.Split(' ');
+                    int spaces = int.Parse(t[2]);
+
+                    if (spaces < 1)
+                    {
+                        MessageBox.Show("The selected team is full, please choose another team.", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        cb_teams.Focus();
+                        return;
+                    }
+                    //line = dgv_customer.SelectedRows[0].Index;
+                    string queryUpdateCustomer = String.Format(@"
                     UPDATE
                         tb_customers
                     SET
@@ -125,13 +131,13 @@ namespace gym_management
                     WHERE
                         N_IDCUSTOMER ={5}
                 ", tb_name.Text, mtb_phone.Text, cb_status.SelectedValue, cb_teams.SelectedValue, destinyComplete, selectedId);
-                Database.dml(queryUpdateCustomer);
-                MessageBox.Show("Changes Saved", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //dgv_customer[1, line].Value = tb_name.Text;
-            }
-            if (currentTeam == team)
-            {
-                string queryUpdateCustomer = String.Format(@"
+                    Database.dml(queryUpdateCustomer);
+                    MessageBox.Show("Changes Saved", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //dgv_customer[1, line].Value = tb_name.Text;
+                }
+                if (currentTeam == team)
+                {
+                    string queryUpdateCustomer = String.Format(@"
                     UPDATE
                         tb_customers
                     SET
@@ -143,8 +149,9 @@ namespace gym_management
                     WHERE
                         N_IDCUSTOMER ={5}
                 ", tb_name.Text, mtb_phone.Text, cb_status.SelectedValue, cb_teams.SelectedValue, destinyComplete, selectedId);
-                Database.dml(queryUpdateCustomer);
-                MessageBox.Show("Changes Saved", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Database.dml(queryUpdateCustomer);
+                    MessageBox.Show("Changes Saved", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
         }
 
