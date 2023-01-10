@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(F_CustomerManagement));
             this.dgv_customer = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btn_close = new System.Windows.Forms.Button();
@@ -228,6 +229,7 @@
             this.Controls.Add(this.tb_name);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dgv_customer);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "F_CustomerManagement";
             this.Text = "Customer Management";
             this.Load += new System.EventHandler(this.F_CustomerManagement_Load);

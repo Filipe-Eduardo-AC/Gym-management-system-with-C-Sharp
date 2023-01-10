@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(F_NewCustomer));
             this.tb_name = new System.Windows.Forms.TextBox();
             this.mtb_phone = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -226,6 +227,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.mtb_phone);
             this.Controls.Add(this.tb_name);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "F_NewCustomer";
             this.Text = "New Customer";
             this.Load += new System.EventHandler(this.F_NewCustomer_Load);

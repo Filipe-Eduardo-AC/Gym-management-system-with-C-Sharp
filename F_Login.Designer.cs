@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(F_Login));
             this.label1 = new System.Windows.Forms.Label();
             this.tb_username = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -51,7 +52,6 @@
             this.tb_username.Name = "tb_username";
             this.tb_username.Size = new System.Drawing.Size(144, 23);
             this.tb_username.TabIndex = 1;
-            this.tb_username.Text = "Filipeeac";
             // 
             // label2
             // 
@@ -69,7 +69,6 @@
             this.tb_password.PasswordChar = '*';
             this.tb_password.Size = new System.Drawing.Size(144, 23);
             this.tb_password.TabIndex = 3;
-            this.tb_password.Text = "1205";
             // 
             // btn_login
             // 
@@ -103,6 +102,7 @@
             this.Controls.Add(this.tb_username);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "F_Login";
