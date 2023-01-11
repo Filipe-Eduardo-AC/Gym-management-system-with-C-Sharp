@@ -62,6 +62,7 @@ namespace gym_management
             //dgv_users.DataSource = Database.GetUsersIdName();
             //dgv_users.CurrentCell = dgv_users[0, line];
             dgv_users[1, line].Value = tb_name.Text;
+            MessageBox.Show("Changes Saved", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btn_delete_Click(object sender, EventArgs e)

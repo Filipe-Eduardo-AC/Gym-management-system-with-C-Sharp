@@ -72,7 +72,7 @@
             // lb_name
             // 
             this.lb_name.AutoSize = true;
-            this.lb_name.Location = new System.Drawing.Point(145, 10);
+            this.lb_name.Location = new System.Drawing.Point(173, 10);
             this.lb_name.Name = "lb_name";
             this.lb_name.Size = new System.Drawing.Size(22, 15);
             this.lb_name.TabIndex = 4;
@@ -81,7 +81,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(115, 10);
+            this.label2.Location = new System.Drawing.Point(143, 10);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(33, 15);
             this.label2.TabIndex = 3;
@@ -90,7 +90,7 @@
             // lb_access
             // 
             this.lb_access.AutoSize = true;
-            this.lb_access.Location = new System.Drawing.Point(81, 10);
+            this.lb_access.Location = new System.Drawing.Point(109, 10);
             this.lb_access.Name = "lb_access";
             this.lb_access.Size = new System.Drawing.Size(13, 15);
             this.lb_access.TabIndex = 2;
@@ -102,9 +102,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(39, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 15);
+            this.label1.Size = new System.Drawing.Size(73, 15);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Access:";
+            this.label1.Text = "Access level:";
             // 
             // pb_ledlogged
             // 
