@@ -11,6 +11,11 @@ This program has:
 - Completely funciontal Installer
 - Others
 
+After setup tips:
+- The app has a default user (Username: Admin / Password: 1234)
+- You can use this user to log for the first time and create other users
+- Always keep in mind to have AT LEAST ONE level 1 or level 2 user created, without it you'll not be able to create other users and use the app
+
 ![Pic01](https://user-images.githubusercontent.com/100179392/211670808-4fbceda0-e1da-4eda-a325-ce61cdc638ce.png)
 ![Pic02](https://user-images.githubusercontent.com/100179392/211670810-b0a5f4ed-24f8-49a8-a4a6-08cf55e65c58.png)
 ![Pic03](https://user-images.githubusercontent.com/100179392/211670811-e7772316-770a-4437-8468-d3794c423ce1.png)
